@@ -9,42 +9,30 @@ function Nav({ isOpen }) {
     <div
       className={
         isOpen
-          ? "md:max-w-1/3 absolute min-w-51 -left-40 top-15 rounded max-w-[80%] h-auto p-4 text-lg border"
+          ? "bg-[url('/bg.png')] bg-black/90 bg-blend-darken  md:max-w-1/3 absolute min-w-51  -left-40 top-15 rounded max-w-[80%] h-auto p-4 text-lg border-2 text-white/60 border-white/20 "
           : "hidden"
       }
     >
       {/* Navigation menu items can be added here */}
       <ul className="flex flex-col gap-4">
         <li className="flex items-center gap-2">
-          <a
-            href="#"
-            className="text-white hover:text-gray-300 flex items-center gap-2"
-          >
+          <a href="#" className=" hover:text-white flex items-center gap-2">
             <FaPlay /> <p>Play</p>
           </a>
         </li>
         <li className="flex items-center gap-2">
-          <a
-            href="#"
-            className="text-white hover:text-gray-300 flex items-center gap-2"
-          >
+          <a href="#" className=" hover:text-white flex items-center gap-2">
             <FaMedal /> <p>Hall Of Fame</p>
           </a>
         </li>
         <li className="flex items-center gap-2">
-          <a
-            href="#"
-            className="text-white hover:text-gray-300 flex items-center gap-2"
-          >
+          <a href="#" className="hover:text-white flex items-center gap-2">
             <FaFilter />
             <p>Filter</p>
           </a>
         </li>
         <li className="flex items-center gap-2">
-          <a
-            href="#"
-            className="text-white hover:text-gray-300 flex items-center gap-2"
-          >
+          <a href="#" className="hover:text-white flex items-center gap-2">
             <GoCommentDiscussion />
             <p>Discussion</p>
           </a>

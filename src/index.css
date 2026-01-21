@@ -3,10 +3,12 @@
 
 @theme {
   --font-manrope: "Manrope", sans-serif;
+  --color-primary: #c9ea59;
 }
 body {
   background-image: url(/bg.png);
   background-color: rgba(0, 0, 0, 0.9);
   background-blend-mode: darken;
   color: white;
+  font-family: "Manrope", sans-serif;
 }

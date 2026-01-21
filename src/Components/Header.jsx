@@ -1,6 +1,7 @@
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Nav from "./Nav";
+import { IoIosClose } from "react-icons/io";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -28,7 +29,11 @@ function Header() {
             className="hover:bg-white/10 px-3 rounded py-1.5"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <RxHamburgerMenu size={34} />
+            {isOpen ? (
+              <IoIosClose size={34} className="text-5xl" />
+            ) : (
+              <RxHamburgerMenu size={34} />
+            )}
           </button>
 
           <Nav isOpen={isOpen} />
