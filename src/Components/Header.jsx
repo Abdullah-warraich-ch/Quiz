@@ -8,7 +8,9 @@ function Header() {
 
   return (
     <div className="flex justify-between md:max-w-[70%]  max-w-[95%] m-auto items-center p-4">
-      <div className="font-bold text-white text-4xl">Quiz</div>
+      <div className="font-bold text-white text-4xl">
+        Quiz<span className="text-primary">.</span>
+      </div>
       <div
         className="flex gap-10 text-xl justify-center
        items-center"

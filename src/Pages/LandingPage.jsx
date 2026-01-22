@@ -5,6 +5,7 @@ import Properties from "../Components/Properties.jsx";
 import Filter from "../Components/Filter.jsx";
 import Info from "../Components/Info.jsx";
 import Sliderr from "../Components/Slider.jsx";
+import Faq from "../Components/Faq.jsx";
 function LandingPage() {
   return (
     <div>
@@ -14,6 +15,7 @@ function LandingPage() {
       <Filter />
       <Info />
       <Sliderr />
+      <Faq />
     </div>
   );
 }
