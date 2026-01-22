@@ -3,6 +3,8 @@ import Header from "../Components/Header.jsx";
 import Hero from "../Components/Hero.jsx";
 import Properties from "../Components/Properties.jsx";
 import Filter from "../Components/Filter.jsx";
+import Info from "../Components/Info.jsx";
+import Sliderr from "../Components/Slider.jsx";
 function LandingPage() {
   return (
     <div>
@@ -10,6 +12,8 @@ function LandingPage() {
       <Hero />
       <Properties />
       <Filter />
+      <Info />
+      <Sliderr />
     </div>
   );
 }
