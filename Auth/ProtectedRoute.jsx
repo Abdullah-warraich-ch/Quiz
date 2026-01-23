@@ -5,7 +5,11 @@ import { useContext } from "react";
 export default function ProtectedRoute({ children }) {
   const { currentUser, authLoading } = useContext(AuthContext);
   if (authLoading) {
-    return <p>User Authenticating........</p>;
+    return (
+      <div className="h-screen">
+        <p>User Authenticating........</p>;
+      </div>
+    );
   }
   if (!currentUser) {
     return <Navigate to="/homepage" replace />;
