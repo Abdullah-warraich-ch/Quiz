@@ -7,7 +7,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function Faq() {
   return (
-    <div className="h-screen w-full px-4 pt-2">
+    <div className="h-auto  w-full px-4 pb-15 pt-2">
       <div className="flex justify-center pb-10 text-2xl font-bold">FAQ</div>
       <div className="mx-auto w-full max-w-lg divide-y divide-white/5 rounded-xl bg-white/20">
         <Disclosure as="div" className="p-6" defaultOpen={false}>

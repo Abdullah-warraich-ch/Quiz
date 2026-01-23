@@ -63,7 +63,7 @@ function Hero() {
           </span>
           <p>[2, 4, 6, 8]</p>
         </div>
-        <div className="bg-white/40 px-8 py-10 rounded-xl border-2 opacity-60  border-primary/20 flex  gap-5 items-center">
+        <div className="bg-white/40 px-8 py-10 rounded-xl border-2 opacity-60  border-primary flex  gap-5 items-center">
           <span className=" px-2 self-start text-2xl rounded text-white">
             <ImCheckboxUnchecked />
           </span>
