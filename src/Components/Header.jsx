@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Nav from "./Nav";
 import { IoIosClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Coontext/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { currentUser, AuthLoading } = useContext(AuthContext);
+
+  async function LogOut() {
+    try {
+      signOut(auth);
+      console.log("Success");
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div className="flex justify-between md:max-w-[70%]  max-w-[95%] m-auto items-center p-4">
@@ -17,15 +30,29 @@ function Header() {
        items-center"
       >
         <div className="hidden md:flex gap-10 justify-center items-center">
-          <a href="#" className="text-white hover:text-gray-300">
-            Login
-          </a>
           <Link
-            to="/signup"
-            className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+            to="/signin"
+            className={
+              currentUser ? "hidden" : "text-white hover:text-gray-300"
+            }
           >
-            Register
+            Login
           </Link>
+          {currentUser ? (
+            <button
+              onClick={LogOut}
+              className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link
+              to="/signup"
+              className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+            >
+              Register
+            </Link>
+          )}
         </div>
         <div className="relative">
           <button
