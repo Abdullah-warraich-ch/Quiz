@@ -21,7 +21,7 @@ function Header() {
   }
 
   return (
-    <div className="flex justify-between md:max-w-[70%]  max-w-[95%] m-auto items-center p-4">
+    <div className="flex justify-between md:max-w-[70%]  max-w-[90%]  m-auto items-center py-4">
       <div className="font-bold text-white text-4xl">
         Quiz<span className="text-primary">.</span>
       </div>
@@ -43,7 +43,7 @@ function Header() {
               onClick={LogOut}
               className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
             >
-              LogOut
+              Log out
             </button>
           ) : (
             <Link
@@ -56,7 +56,7 @@ function Header() {
         </div>
         <div className="relative">
           <button
-            className="hover:bg-white/10 px-3 rounded py-1.5"
+            className="hover:bg-white/10  rounded py-1.5"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
@@ -66,7 +66,7 @@ function Header() {
             )}
           </button>
 
-          <Nav isOpen={isOpen} />
+          <Nav isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
     </div>

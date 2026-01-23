@@ -4,7 +4,22 @@ import { FaMedal } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import { GoCommentDiscussion } from "react-icons/go";
 import { Link } from "react-router-dom";
-function Nav({ isOpen }) {
+import { AuthContext } from "../../Coontext/AuthContext";
+import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+
+function Nav({ isOpen, setIsOpen }) {
+  const { currentUser } = useContext(AuthContext);
+  async function LogOut() {
+    try {
+      signOut(auth);
+      setIsOpen(false);
+    } catch (e) {
+      console.log(e);
+      setIsOpen(false);
+    }
+  }
   return (
     <div
       className={
@@ -39,15 +54,30 @@ function Nav({ isOpen }) {
         </li>
       </ul>
       <div className="flex md:hidden justify-around mt-5 items-center">
-        <a href="#" className="text-white text-sm hover:text-gray-300">
-          Login
-        </a>
         <Link
-          to="/signup"
-          className="text-white bg-white/10 text-sm px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+          to="/signin"
+          href="#"
+          className="text-white text-sm hover:text-gray-300"
+          onClick={() => setIsOpen(false)}
         >
-          Register
+          {currentUser ? "" : "Login"}
         </Link>
+        {currentUser ? (
+          <button
+            onClick={LogOut}
+            className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+          >
+            Log out
+          </button>
+        ) : (
+          <Link
+            onClick={() => setIsOpen(false)}
+            to="/signup"
+            className="text-white bg-white/10 text-sm px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+          >
+            Register
+          </Link>
+        )}
       </div>
     </div>
   );
