@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import { GoCommentDiscussion } from "react-icons/go";
-
+import { Link } from "react-router-dom";
 function Nav({ isOpen }) {
   return (
     <div
@@ -42,12 +42,12 @@ function Nav({ isOpen }) {
         <a href="#" className="text-white text-sm hover:text-gray-300">
           Login
         </a>
-        <a
-          href="#"
+        <Link
+          to="/signup"
           className="text-white bg-white/10 text-sm px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
         >
           Register
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Nav from "./Nav";
 import { IoIosClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -19,12 +20,12 @@ function Header() {
           <a href="#" className="text-white hover:text-gray-300">
             Login
           </a>
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
           >
             Register
-          </a>
+          </Link>
         </div>
         <div className="relative">
           <button
