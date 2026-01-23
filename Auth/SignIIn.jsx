@@ -16,6 +16,7 @@ const SignIIn = () => {
   async function signinwithGoogle() {
     try {
       await signInWithPopup(auth, googleProvider);
+      Navigate("/");
     } catch (err) {
       setError(err.message);
     }
