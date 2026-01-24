@@ -3,8 +3,15 @@ import { AuthContext } from "../Context/AuthContext";
 import Modal from "../Components/Modal";
 import { Link } from "react-router-dom";
 import { db } from "../../firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { FaCopy, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { FaCopy, FaExternalLinkAlt, FaTrash } from "react-icons/fa";
 
 function Dashboard() {
   const { currentUser } = useContext(AuthContext);
@@ -59,6 +66,17 @@ function Dashboard() {
     loadQuizzes();
   }, [currentUser]);
 
+  const handleDelete = async (quizId) => {
+    if (window.confirm("Are you sure you want to delete this quiz?")) {
+      try {
+        await deleteDoc(doc(db, "quizzes", quizId));
+        setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
+      } catch (error) {
+        console.error("Error deleting quiz:", error);
+      }
+    }
+  };
+
   return (
     <div className="h-auto mt-10 max-w-[90%] mx-auto">
       <div className="flex justify-between items-center">
@@ -98,7 +116,8 @@ function Dashboard() {
                   <span
                     className={`px-2 py-1 rounded text-white font-medium text-xs capitalize ${getTypeColor(quiz.topic)}`}
                   >
-                    {quiz.topic.charAt(0).toUpperCase() + quiz.topic.slice(1).toLowerCase()}
+                    {quiz.topic.charAt(0).toUpperCase() +
+                      quiz.topic.slice(1).toLowerCase()}
                   </span>
                 </td>
                 <td className="p-2 text-center">{quiz.title}</td>
@@ -111,7 +130,7 @@ function Dashboard() {
                 <td className="p-2 text-center">
                   {new Date(quiz.createdAt.seconds * 1000).toLocaleDateString()}
                 </td>
-                <td className="p-2 text-center flex justify-center items-center gap-2">
+                <td className="p-2 text-center flex justify-around items-center">
                   <FaCopy
                     className="cursor-pointer hover:text-blue-400"
                     onClick={() =>
@@ -127,6 +146,11 @@ function Dashboard() {
                       title="Open Quiz"
                     />
                   </Link>
+                  <FaTrash
+                    className="cursor-pointer hover:text-red-400"
+                    onClick={() => handleDelete(quiz.id)}
+                    title="Delete Quiz"
+                  />
                 </td>
               </tr>
             ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FaMedal } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
@@ -7,10 +7,28 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 function Nav({ isOpen, setIsOpen }) {
   const { currentUser } = useContext(AuthContext);
+  const [randomQuizId, setRandomQuizId] = useState(null);
+
+  useEffect(() => {
+    const fetchPublicQuizzes = async () => {
+      const q = query(
+        collection(db, "quizzes"),
+        where("visibility", "==", "public"),
+      );
+      const snapshot = await getDocs(q);
+      const quizzes = snapshot.docs.map((doc) => doc.id);
+      if (quizzes.length > 0) {
+        const randomId = quizzes[Math.floor(Math.random() * quizzes.length)];
+        setRandomQuizId(randomId);
+      }
+    };
+    fetchPublicQuizzes();
+  }, []);
   async function LogOut() {
     try {
       signOut(auth);
@@ -31,9 +49,13 @@ function Nav({ isOpen, setIsOpen }) {
       {/* Navigation menu items can be added here */}
       <ul className="flex flex-col gap-4">
         <li className="flex items-center gap-2">
-          <a href="#" className=" hover:text-white flex items-center gap-2">
+          <Link
+            to={randomQuizId ? `/quiz/${randomQuizId}` : "#"}
+            className=" hover:text-white flex items-center gap-2"
+            onClick={() => setIsOpen(false)}
+          >
             <FaPlay /> <p>Play</p>
-          </a>
+          </Link>
         </li>
         <li className="flex items-center gap-2">
           <a href="#" className=" hover:text-white flex items-center gap-2">
