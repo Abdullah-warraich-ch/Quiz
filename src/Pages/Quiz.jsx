@@ -42,6 +42,7 @@ function Quiz() {
     e.preventDefault();
     if (pin === quiz.pin) {
       setIsAuthenticated(true);
+      setError(null);
     } else {
       setError("Incorrect PIN");
     }
@@ -72,8 +73,7 @@ function Quiz() {
   };
 
   if (loading) return <div className="text-center mt-20">Loading...</div>;
-  if (error)
-    return <div className="text-center mt-20 text-red-500">{error}</div>;
+
   if (!quiz) return <div className="text-center mt-20">Quiz not found</div>;
 
   if (!isAuthenticated) {
@@ -89,13 +89,22 @@ function Quiz() {
             className="w-full border border-white/20 p-4 rounded-2xl bg-transparent text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
             required
           />
-          <button
-            type="submit"
-            className="text-white bg-white/20 text-lg font-bold px-4 py-3 rounded-xl border border-white/20 hover:bg-white/30 hover:border-white/30 transition-all"
-          >
-            Submit
-          </button>
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              className="text-white w-1/2 bg-white/20 text-lg font-bold px-4 py-3 rounded-xl border border-white/20 hover:bg-white/30 hover:border-white/30 transition-all"
+            >
+              Submit
+            </button>
+            <Link
+              to="/"
+              className="text-white w-1/2 text-center bg-white/20 text-lg font-bold px-4 py-3 rounded-xl border border-white/20 hover:bg-white/30 hover:border-white/30 transition-all"
+            >
+              Cancel
+            </Link>
+          </div>
         </form>
+        {error && <p className="text-red-500 text-center">{error}</p>}
       </div>
     );
   }

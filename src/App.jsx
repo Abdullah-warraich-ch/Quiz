@@ -35,14 +35,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/quiz/:id"
-              element={
-                <ProtectedRoute>
-                  <Quiz />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/quiz/:id" element={<Quiz />} />
           </Route>
         </Routes>
       </BrowserRouter>
