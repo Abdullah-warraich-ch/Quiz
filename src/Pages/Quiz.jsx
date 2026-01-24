@@ -78,7 +78,7 @@ function Quiz() {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col max-w-[90%] md:max-w-[30%] m-auto h-auto py-20 gap-8">
+      <div className="flex flex-col  max-w-[90%] md:max-w-[30%] m-auto h-auto py-20 gap-8">
         <h2 className="text-center font-bold text-5xl">Enter PIN</h2>
         <form onSubmit={handlePinSubmit} className="flex flex-col gap-5">
           <input
@@ -131,7 +131,7 @@ function Quiz() {
 
   return (
     <div className="flex flex-col max-w-[90%] md:max-w-[50%] m-auto h-auto py-20 gap-8">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col justify-between ">
         <h2 className="font-bold text-3xl">{quiz.title}</h2>
         <p className="text-lg">
           {currentQuestionIndex + 1} / {quiz.questions.length}
@@ -142,16 +142,16 @@ function Quiz() {
           Question ({currentQuestionIndex + 1}): {currentQuestion.question}
         </p>
         <div className="flex flex-col gap-2">
-          {Object.keys(currentQuestion.options).map((key, index) => (
+          {currentQuestion.options.map((opt, index) => (
             <div
-              key={key}
+              key={index}
               className={`bg-white/20 p-4 rounded-xl border border-white/20 cursor-pointer flex items-center gap-3 ${selectedOption === index ? "bg-white/30" : ""}`}
               onClick={() => handleOptionSelect(index)}
             >
               {selectedOption === index && (
                 <FaCheck className="text-green-500" />
               )}
-              <span>{currentQuestion.options[key]}</span>
+              <span>{opt}</span>
             </div>
           ))}
         </div>

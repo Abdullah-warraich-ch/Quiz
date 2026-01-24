@@ -53,12 +53,7 @@ function CreateQuizPage() {
     }
     const questionObject = {
       question: questionText,
-      options: {
-        option1,
-        option2,
-        option3,
-        option4,
-      },
+      options: [option1, option2, option3, option4],
       answer: correct,
     };
     setLocalQuestions([...localQuestions, questionObject]);
