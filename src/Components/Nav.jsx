@@ -4,7 +4,7 @@ import { FaMedal } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import { GoCommentDiscussion } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Coontext/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -65,7 +65,7 @@ function Nav({ isOpen, setIsOpen }) {
         {currentUser ? (
           <button
             onClick={LogOut}
-            className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+            className="text-white font-medium bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
           >
             Log out
           </button>
@@ -73,7 +73,7 @@ function Nav({ isOpen, setIsOpen }) {
           <Link
             onClick={() => setIsOpen(false)}
             to="/signup"
-            className="text-white bg-white/10 text-sm px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+            className="text-white font-medium bg-white/10 text-sm px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
           >
             Register
           </Link>

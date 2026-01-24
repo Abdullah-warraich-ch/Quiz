@@ -1,10 +1,12 @@
 import "./App.css";
 import LandingPage from "./Pages/LandingPage";
 import { BrowserRouter, Routes, Route } from "react-router";
-import SignUp from "../Auth/SignUp";
+import SignUp from "./Auth/SignUp";
 import MainLayout from "./MainLayout";
-import SignIIn from "../Auth/SignIIn";
+import SignIn from "./Auth/SignIn";
 import Dashboard from "./Pages/Dashboard";
+import CreateQuizPage from "./Components/CreateQuizPage";
+import ProtectedRoute from "./Auth/ProtectedRoute";
 
 function App() {
   return (
@@ -21,15 +23,15 @@ function App() {
               }
             />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIIn />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route path="/homepage" element={<LandingPage />} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/createquiz" element={<CreateQuizPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </>
   );
 }
-import SignIn from "../Auth/SignIIn";
-import ProtectedRoute from "../Auth/ProtectedRoute";
 
 export default App;

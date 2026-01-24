@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -11,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "quizdot-52c4b.firebasestorage.app",
   messagingSenderId: "152127384776",
   appId: "1:152127384776:web:538160a95fc46cc6b109fd",
-  measurementId: "G-4R4B79LBNM"
+  measurementId: "G-4R4B79LBNM",
 };
 
 // Initialize Firebase
@@ -21,5 +23,7 @@ const analytics = getAnalytics(app);
 // Initialize Firebase Authentication
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+const database = getDatabase(app);
+export const db = getFirestore(app);
 
-export { app, analytics };
+export { app, analytics, database };

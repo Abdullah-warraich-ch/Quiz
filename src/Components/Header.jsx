@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Nav from "./Nav";
 import { IoIosClose } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Coontext/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
@@ -23,7 +23,10 @@ function Header() {
   return (
     <div className="flex justify-between md:max-w-[70%]  max-w-[90%]  m-auto items-center py-4">
       <div className="font-bold text-white text-4xl">
-        Quiz<span className="text-primary">.</span>
+        <Link to="/">
+          {" "}
+          Quiz<span className="text-primary">.</span>
+        </Link>
       </div>
       <div
         className="flex gap-10 text-xl justify-center
@@ -33,7 +36,9 @@ function Header() {
           <Link
             to="/signin"
             className={
-              currentUser ? "hidden" : "text-white hover:text-gray-300"
+              currentUser
+                ? "hidden"
+                : "text-white font-medium hover:text-gray-300"
             }
           >
             Login
@@ -41,14 +46,14 @@ function Header() {
           {currentUser ? (
             <button
               onClick={LogOut}
-              className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+              className="text-white text-sm font-medium bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
             >
               Log out
             </button>
           ) : (
             <Link
               to="/signup"
-              className="text-white bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
+              className="text-white font-medium bg-white/10 px-4 py-2 rounded border-0.5 border-white/20 hover:bg-white/20"
             >
               Register
             </Link>
@@ -56,7 +61,7 @@ function Header() {
         </div>
         <div className="relative">
           <button
-            className="hover:bg-white/10  rounded py-1.5"
+            className="hover:bg-white/10  rounded  p-1.5"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
