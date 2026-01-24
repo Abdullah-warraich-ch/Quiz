@@ -2,9 +2,62 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import Modal from "../Components/Modal";
 import { Link } from "react-router-dom";
+import { db } from "../../firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { FaCopy, FaExternalLinkAlt } from "react-icons/fa";
 
 function Dashboard() {
   const { currentUser } = useContext(AuthContext);
+  const [quizzes, setQuizzes] = useState([]);
+
+  const getTypeColor = (type) => {
+    switch (type.toLowerCase()) {
+      case "html":
+        return "bg-red-500";
+      case "css":
+        return "bg-blue-500";
+      case "javascript":
+        return "bg-yellow-500";
+      case "sql":
+        return "bg-green-500";
+      case "php":
+        return "bg-purple-500";
+      case "react":
+        return "bg-cyan-500";
+      case "nodejs":
+        return "bg-green-600";
+      case "mongodb":
+        return "bg-green-700";
+      case "api":
+        return "bg-indigo-500";
+      case "testing":
+        return "bg-pink-500";
+      case "devops":
+        return "bg-orange-500";
+      case "security":
+        return "bg-gray-600";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
+  useEffect(() => {
+    const loadQuizzes = async () => {
+      if (currentUser) {
+        const q = query(
+          collection(db, "quizzes"),
+          where("createdBy", "==", currentUser.uid),
+        );
+        const querySnapshot = await getDocs(q);
+        const userQuizzes = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setQuizzes(userQuizzes);
+      }
+    };
+    loadQuizzes();
+  }, [currentUser]);
 
   return (
     <div className="h-auto mt-10 max-w-[90%] mx-auto">
@@ -34,6 +87,50 @@ function Dashboard() {
               <th>Action</th>
             </tr>
           </thead>
+          <tbody>
+            {quizzes.map((quiz, index) => (
+              <tr
+                key={quiz.id}
+                className="border-b border-white/10 text-xs md:text-base"
+              >
+                <td className="p-2 text-center">{index + 1}</td>
+                <td className="p-2 text-center">
+                  <span
+                    className={`px-2 py-1 rounded text-white font-medium text-xs capitalize ${getTypeColor(quiz.topic)}`}
+                  >
+                    {quiz.topic.charAt(0).toUpperCase() + quiz.topic.slice(1).toLowerCase()}
+                  </span>
+                </td>
+                <td className="p-2 text-center">{quiz.title}</td>
+                <td className="p-2 text-center hidden md:table-cell">
+                  {quiz.questions ? quiz.questions.length : 0}
+                </td>
+                <td className="p-2 text-center">
+                  {quiz.visibility === "public" ? "Public" : "Private"}
+                </td>
+                <td className="p-2 text-center">
+                  {new Date(quiz.createdAt.seconds * 1000).toLocaleDateString()}
+                </td>
+                <td className="p-2 text-center flex justify-center items-center gap-2">
+                  <FaCopy
+                    className="cursor-pointer hover:text-blue-400"
+                    onClick={() =>
+                      navigator.clipboard.writeText(
+                        window.location.origin + "/quiz/" + quiz.id,
+                      )
+                    }
+                    title="Copy Quiz Link"
+                  />
+                  <Link to={`/quiz/${quiz.id}`}>
+                    <FaExternalLinkAlt
+                      className="cursor-pointer hover:text-green-400"
+                      title="Open Quiz"
+                    />
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

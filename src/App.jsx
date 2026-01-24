@@ -7,6 +7,7 @@ import SignIn from "./Auth/SignIn";
 import Dashboard from "./Pages/Dashboard";
 import CreateQuizPage from "./Components/CreateQuizPage";
 import ProtectedRoute from "./Auth/ProtectedRoute";
+import Quiz from "./Pages/Quiz";
 
 function App() {
   return (
@@ -26,7 +27,22 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/homepage" element={<LandingPage />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
-            <Route path="/createquiz" element={<CreateQuizPage />} />
+            <Route
+              path="/createquiz"
+              element={
+                <ProtectedRoute>
+                  <CreateQuizPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/quiz/:id"
+              element={
+                <ProtectedRoute>
+                  <Quiz />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
