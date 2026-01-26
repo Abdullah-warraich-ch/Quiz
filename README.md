@@ -40,7 +40,7 @@ A modern, responsive **Quiz Web Application** built with **React**, **Firebase**
 
 ## 📁 Project Structure
 
-````text
+```text
 Quiz/
 ├── 📁 public/                 # Static assets (images, icons)
 │   ├── 📁 images/             # UI and content images
@@ -100,7 +100,7 @@ Quiz/
     }
   ]
 }
-````
+```
 
 > ⚠️ **Important:** Options are stored as arrays to preserve order and ensure accurate scoring.
 
