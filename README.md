@@ -40,7 +40,7 @@ A modern, responsive **Quiz Web Application** built with **React**, **Firebase**
 
 ## 📁 Project Structure
 
-```text
+````text
 Quiz/
 ├── 📁 public/                 # Static assets (images, icons)
 │   ├── 📁 images/             # UI and content images
@@ -76,7 +76,7 @@ Quiz/
 ├── vite.config.js             # Vite configuration
 └── vercel.json                # Vercel deployment settings
 
----
+--- ```
 
 ## 🔥 Firestore Data Structure
 
@@ -100,7 +100,7 @@ Quiz/
     }
   ]
 }
-```
+````
 
 > ⚠️ **Important:** Options are stored as arrays to preserve order and ensure accurate scoring.
 
@@ -180,7 +180,7 @@ This project is licensed under the **MIT License**.
 ## 👨‍💻 Author
 
 **Muhammad Abdullah**  
-Software Engineering Graduate | MERN Stack Developer  
+Software Engineering Graduate | MERN Stack Developer
 
 ---
 
