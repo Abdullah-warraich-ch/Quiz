@@ -7,13 +7,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBOpd3rydF_v9wVnxaFyXtpMgVmgqnZ9vw",
-  authDomain: "quizdot-52c4b.firebaseapp.com",
-  projectId: "quizdot-52c4b",
-  storageBucket: "quizdot-52c4b.firebasestorage.app",
-  messagingSenderId: "152127384776",
-  appId: "1:152127384776:web:538160a95fc46cc6b109fd",
-  measurementId: "G-4R4B79LBNM",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

@@ -41,14 +41,40 @@ A modern, responsive **Quiz Web Application** built with **React**, **Firebase**
 ## 📁 Project Structure
 
 ```text
-src/
-│── components/
-│   └── Quiz.jsx
-│
-│── firebase.js
-│── App.jsx
-│── main.jsx
-```
+Quiz/
+├── 📁 public/                 # Static assets (images, icons)
+│   ├── 📁 images/             # UI and content images
+│   ├── bg.png                 # Background asset
+│   └── vite.svg               # Vite logo
+├── 📁 src/                    # Source code
+│   ├── 📁 assets/             # Component-specific assets
+│   ├── 📁 Auth/               # Authentication logic & components
+│   │   ├── ProtectedRoute.jsx # Route guard for logged-in users
+│   │   ├── SignIn.jsx         # Sign-in page
+│   │   └── SignUp.jsx         # Sign-up page
+│   ├── 📁 Components/         # Reusable UI components
+│   │   ├── Card.jsx           # Quiz/Item card
+│   │   ├── CreateQuizPage.jsx # Quiz creation interface
+│   │   ├── Header.jsx         # Application header
+│   │   ├── Nav.jsx            # Navigation bar
+│   │   └── ... (Footer, Loader, Modal, etc.)
+│   ├── 📁 Context/            # Global state management
+│   │   └── AuthContext.jsx    # User authentication state
+│   ├── 📁 Pages/              # Full page components
+│   │   ├── Dashboard.jsx      # User dashboard
+│   │   ├── LandingPage.jsx    # Main home page
+│   │   └── Quiz.jsx           # Quiz taking page
+│   ├── App.css                # Global styles
+│   ├── App.jsx                # Main application component
+│   ├── index.css              # Base Tailwind/Global styles
+│   ├── MainLayout.jsx         # Shared layout wrapper
+│   └── main.jsx               # Entry point
+├── .env                       # (NEW) Environment variables (HIDDEN FROM GIT)
+├── .gitignore                 # Files excluded from GitHub
+├── firebase.js                # Firebase initialization & config
+├── package.json               # Dependencies & scripts
+├── vite.config.js             # Vite configuration
+└── vercel.json                # Vercel deployment settings
 
 ---
 
