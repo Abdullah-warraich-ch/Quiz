@@ -76,7 +76,7 @@ Quiz/
 ├── vite.config.js             # Vite configuration
 └── vercel.json                # Vercel deployment settings
 
---- ```
+```
 
 ## 🔥 Firestore Data Structure
 
