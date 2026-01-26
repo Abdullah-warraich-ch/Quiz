@@ -85,7 +85,7 @@ src/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/quiz-web-app.git
+git clone https://github.com/Abdullah-warraich-ch/quiz-web-app.git
 cd quiz-web-app
 ```
 
